@@ -223,7 +223,7 @@ export default function GauntletPresentation() {
     
     autoPlayRef.current = setInterval(() => {
       setActiveScreen((prev) => (prev + 1) % phoneScreens.length);
-    }, 8000); // 8 seconds as requested
+    }, 2500); // 2.5 seconds
     
     return () => {
       if (autoPlayRef.current) {
