@@ -176,6 +176,17 @@ const WoofLogo = ({ className = 'w-6 h-6' }) => (
   </svg>
 );
 
+// Google Analytics event tracking helper
+const trackEvent = (eventName, eventCategory, eventLabel = '', value = null) => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', eventName, {
+      event_category: eventCategory,
+      event_label: eventLabel,
+      value: value
+    });
+  }
+};
+
 // Main Presentation Component
 export default function GauntletPresentation() {
   const [activeScreen, setActiveScreen] = useState(0);
@@ -199,11 +210,12 @@ export default function GauntletPresentation() {
   const handleScreenChange = useCallback((index) => {
     setActiveScreen(index);
     setAutoPlayEnabled(false);
+    trackEvent('phone_screen_change', 'Phone Mockup', phoneScreens[index].title);
     if (autoPlayRef.current) {
       clearInterval(autoPlayRef.current);
       autoPlayRef.current = null;
     }
-  }, []);
+  }, [phoneScreens]);
 
   // Auto-play animation
   useEffect(() => {
@@ -274,16 +286,34 @@ export default function GauntletPresentation() {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8 text-sm text-zinc-400">
-            <button onClick={() => document.getElementById('vision')?.scrollIntoView({ behavior: 'smooth', block: 'start' })} className="hover:text-white transition-colors cursor-pointer">Vision</button>
-            <button onClick={() => document.getElementById('problem')?.scrollIntoView({ behavior: 'smooth', block: 'start' })} className="hover:text-white transition-colors cursor-pointer">Problem</button>
-            <button onClick={() => document.getElementById('solution')?.scrollIntoView({ behavior: 'smooth', block: 'start' })} className="hover:text-white transition-colors cursor-pointer">Solution</button>
-            <button onClick={() => document.getElementById('business')?.scrollIntoView({ behavior: 'smooth', block: 'start' })} className="hover:text-white transition-colors cursor-pointer">Business</button>
-            <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' })} className="hover:text-white transition-colors cursor-pointer">Contact</button>
+            <button onClick={() => {
+              trackEvent('navigation_click', 'Navigation', 'Vision');
+              document.getElementById('vision')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }} className="hover:text-white transition-colors cursor-pointer">Vision</button>
+            <button onClick={() => {
+              trackEvent('navigation_click', 'Navigation', 'Problem');
+              document.getElementById('problem')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }} className="hover:text-white transition-colors cursor-pointer">Problem</button>
+            <button onClick={() => {
+              trackEvent('navigation_click', 'Navigation', 'Solution');
+              document.getElementById('solution')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }} className="hover:text-white transition-colors cursor-pointer">Solution</button>
+            <button onClick={() => {
+              trackEvent('navigation_click', 'Navigation', 'Business');
+              document.getElementById('business')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }} className="hover:text-white transition-colors cursor-pointer">Business</button>
+            <button onClick={() => {
+              trackEvent('navigation_click', 'Navigation', 'Contact');
+              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }} className="hover:text-white transition-colors cursor-pointer">Contact</button>
           </div>
           
           {/* Desktop CTA */}
           <button 
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+            onClick={() => {
+              trackEvent('cta_click', 'CTA', 'Schedule Call - Header');
+              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
             className="hidden md:block px-4 py-2 bg-gauntlet rounded-full text-sm font-semibold hover:opacity-90 transition-opacity cursor-pointer"
           >
             Schedule Call
@@ -319,6 +349,7 @@ export default function GauntletPresentation() {
                   <button
                     key={item.id}
                     onClick={() => {
+                      trackEvent('navigation_click', 'Mobile Navigation', item.label);
                       document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                       setMobileMenuOpen(false);
                     }}
@@ -329,6 +360,7 @@ export default function GauntletPresentation() {
                 ))}
                 <button
                   onClick={() => {
+                    trackEvent('cta_click', 'CTA', 'Schedule Call - Mobile Menu');
                     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     setMobileMenuOpen(false);
                   }}
@@ -422,13 +454,19 @@ export default function GauntletPresentation() {
 
               <div className="flex flex-col sm:flex-row items-start gap-4">
               <button 
-                onClick={() => document.getElementById('solution')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                onClick={() => {
+                  trackEvent('cta_click', 'CTA', 'Explore Solution - Hero');
+                  document.getElementById('solution')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
                 className="px-8 py-4 bg-gauntlet rounded-full font-semibold text-lg hover:scale-105 transition-transform flex items-center gap-2 cursor-pointer"
               >
                 Explore Solution <ArrowRight className="w-5 h-5" />
               </button>
               <button 
-                onClick={() => document.getElementById('business')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                onClick={() => {
+                  trackEvent('cta_click', 'CTA', 'View Business Model - Hero');
+                  document.getElementById('business')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
                 className="px-8 py-4 bg-white/5 border border-white/10 rounded-full font-semibold text-lg hover:bg-white/10 transition-colors cursor-pointer"
               >
                 View Business Model
@@ -1753,7 +1791,11 @@ export default function GauntletPresentation() {
                 max="200000"
                 step="5000"
                 value={userCount}
-                onChange={(e) => setUserCount(Number(e.target.value))}
+                onChange={(e) => {
+                  const newValue = Number(e.target.value);
+                  setUserCount(newValue);
+                  trackEvent('calculator_change', 'Calculator', 'User Count Slider', newValue);
+                }}
                 className="w-full h-2 bg-white/10 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:bg-gauntlet [&::-webkit-slider-thumb]:rounded-full"
               />
               <div className="flex justify-between text-[11px] text-zinc-600 mt-2">
@@ -1977,6 +2019,7 @@ export default function GauntletPresentation() {
               href="https://calendly.com/dmitriy-woof/small-talk"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent('external_link_click', 'Contact', 'Calendly - Schedule Partnership Discussion')}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               className="inline-flex items-center gap-3 px-12 py-5 bg-gauntlet rounded-full text-xl font-bold text-black shadow-lg shadow-gauntlet/25"
@@ -1986,7 +2029,11 @@ export default function GauntletPresentation() {
             </motion.a>
 
             <p className="mt-6 text-zinc-500">
-              Or reach out directly: <a href="mailto:dmitriy@woof.software" className="text-gauntlet hover:underline">dmitriy@woof.software</a>
+              Or reach out directly: <a 
+                href="mailto:dmitriy@woof.software" 
+                onClick={() => trackEvent('external_link_click', 'Contact', 'Email - dmitriy@woof.software')}
+                className="text-gauntlet hover:underline"
+              >dmitriy@woof.software</a>
             </p>
           </motion.div>
         </div>
