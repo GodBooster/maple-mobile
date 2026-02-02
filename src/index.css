@@ -2,53 +2,81 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Gauntlet Brand Colors - Blue/Violet palette */
+/* Maple Finance Brand Colors - Official Palette */
 :root {
-  --gauntlet: #7180F5;
-  --gauntlet-100: #C6CCFB;
-  --gauntlet-200: #AAB3F9;
-  --gauntlet-300: #8D99F7;
-  --gauntlet-500: #5A66C4;
-  --gauntlet-600: #444D93;
+  /* Primary Colors */
+  --maple: #0E121B; /* Dark primary - для кнопок и акцентов */
+  --maple-accent: #FC784A; /* Оранжевый акцент */
+  
+  /* Background Colors */
+  --maple-bg: #F5F7FA; /* Основной светлый фон */
+  --maple-bg-alt: #F2F7FC; /* Альтернативный фон */
+  --maple-bg-dark: #0E121B; /* Темный фон */
+  
+  /* Text Colors — контраст на светлом фоне (WCAG AA) */
+  --maple-text: rgba(0, 0, 0, 0.9); /* Основной текст */
+  --maple-text-secondary: #3D4451; /* Вторичный текст */
+  --maple-text-muted: #5C6472; /* Приглушенный текст */
+  
+  /* Structural Colors */
+  --maple-structure: #DEE8F0; /* Границы и разделители */
+  --maple-icon: #566074; /* Иконки */
+  
+  /* Legacy support - для совместимости */
+  --maple-100: #F5F7FA;
+  --maple-200: #F2F7FC;
+  --maple-300: #DEE8F0;
+  --maple-500: #3A3F4D;
+  --maple-600: #0E121B;
+  --maple-dark: #0E121B;
 }
 
-.bg-gauntlet {
-  background-color: var(--gauntlet) !important;
+.bg-maple {
+  background-color: var(--maple) !important;
+  color: #ffffff !important; /* Всегда белый текст на тёмных/акцентных кнопках */
 }
 
-.text-gauntlet {
-  color: var(--gauntlet) !important;
+.text-maple {
+  color: var(--maple) !important;
 }
 
-.text-gauntlet-300 {
-  color: var(--gauntlet-300) !important;
+.text-maple-300 {
+  color: var(--maple-300) !important;
 }
 
-.border-gauntlet {
-  border-color: var(--gauntlet) !important;
+.border-maple {
+  border-color: var(--maple) !important;
 }
 
-.shadow-gauntlet\/25 {
-  box-shadow: 0 10px 15px -3px rgba(113, 128, 245, 0.25) !important;
+.shadow-maple\/25 {
+  box-shadow: 0 10px 15px -3px rgba(14, 18, 27, 0.25) !important;
 }
 
-.shadow-gauntlet\/30 {
-  box-shadow: 0 10px 15px -3px rgba(113, 128, 245, 0.3) !important;
+.shadow-maple\/30 {
+  box-shadow: 0 10px 15px -3px rgba(14, 18, 27, 0.3) !important;
 }
 
-.from-gauntlet {
-  --tw-gradient-from: var(--gauntlet) var(--tw-gradient-from-position);
+.shadow-maple-accent\/25 {
+  box-shadow: 0 10px 15px -3px rgba(252, 120, 74, 0.25) !important;
+}
+
+.shadow-maple-accent\/30 {
+  box-shadow: 0 10px 15px -3px rgba(252, 120, 74, 0.3) !important;
+}
+
+.from-maple {
+  --tw-gradient-from: var(--maple) var(--tw-gradient-from-position);
   --tw-gradient-to: rgba(113, 128, 245, 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
-.to-gauntlet {
-  --tw-gradient-to: var(--gauntlet) var(--tw-gradient-to-position);
+.to-maple {
+  --tw-gradient-to: var(--maple) var(--tw-gradient-to-position);
 }
 
-.via-gauntlet-300 {
+.via-maple-300 {
   --tw-gradient-to: rgba(141, 153, 247, 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--gauntlet-300) var(--tw-gradient-via-position), var(--tw-gradient-to);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--maple-300) var(--tw-gradient-via-position), var(--tw-gradient-to);
 }
 
 html {
@@ -72,12 +100,36 @@ html, body {
   overflow-x: hidden;
   width: 100%;
   height: 100%;
-  background-color: #0a0a0f;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  background-color: var(--maple-bg);
+  color: var(--maple-text);
+  /* Основной шрифт для текста */
+  font-family: Geist, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Заголовки с serif шрифтом */
+h1, h2, h3, h4, h5, h6 {
+  font-family: SeasonMix, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  color: var(--maple-600);
+  font-weight: 600;
+}
+
+/* Класс для явного serif-заголовка (перебивает font-sans у родителя) */
+.font-heading-serif {
+  font-family: SeasonMix, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif !important;
+}
+
+/* Все дочерние элементы внутри serif-заголовков тоже используют serif */
+.font-heading-serif,
+.font-heading-serif *,
+.font-heading-serif span {
+  font-family: SeasonMix, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif !important;
+}
+
+p, span, li {
+  color: var(--maple-text);
+  font-family: Geist, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 body {
@@ -89,9 +141,9 @@ body {
   box-sizing: border-box;
 }
 
-/* Custom cursor only on body background */
+/* Standard cursor on body background */
 body {
-  cursor: url('/dog-cursor.png') 24 24, auto;
+  cursor: auto;
 }
 
 /* Standard pointer cursor for ALL interactive elements - ensures they work */
@@ -140,3 +192,11 @@ section,
   }
 }
 
+/* Phone frame glow for retail / corporate modes */
+.phone-frame-retail {
+  box-shadow: 0 30px 80px rgba(252, 120, 74, 0.35);
+}
+
+.phone-frame-corporate {
+  box-shadow: 0 30px 80px rgba(113, 128, 245, 0.35);
+}

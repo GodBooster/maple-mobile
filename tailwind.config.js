@@ -3,49 +3,60 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-    "./GauntletPresentation.jsx",
+    "./MaplePresentation.jsx",
   ],
   safelist: [
-    'bg-gauntlet',
-    'text-gauntlet',
-    'border-gauntlet',
-    'bg-gauntlet/10',
-    'bg-gauntlet/20',
-    'bg-gauntlet/30',
-    'text-gauntlet-300',
-    'bg-gauntlet-300/10',
-    'border-gauntlet/20',
-    'border-gauntlet/30',
-    'border-gauntlet-300/20',
-    'border-gauntlet-300/30',
-    'shadow-gauntlet/25',
-    'shadow-gauntlet/30',
-    'from-gauntlet',
-    'to-gauntlet',
-    'via-gauntlet-300',
-    'from-gauntlet-300',
-    'to-gauntlet-600',
-    'from-gauntlet-600',
-    'from-gauntlet/10',
-    'to-gauntlet/0',
-    'from-gauntlet-300/10',
-    'to-gauntlet-300/10',
+    'bg-maple',
+    'text-maple',
+    'border-maple',
+    'bg-maple/10',
+    'bg-maple/20',
+    'bg-maple/30',
+    'text-maple-300',
+    'bg-maple-300/10',
+    'border-maple/20',
+    'border-maple/30',
+    'border-maple-300/20',
+    'border-maple-300/30',
+    'shadow-maple/25',
+    'shadow-maple/30',
+    'from-maple',
+    'to-maple',
+    'via-maple-300',
+    'from-maple-300',
+    'to-maple-600',
+    'from-maple-600',
+    'from-maple/10',
+    'to-maple/0',
+    'from-maple-300/10',
+    'to-maple-300/10',
   ],
   theme: {
     extend: {
       colors: {
-        gauntlet: {
-          DEFAULT: '#7180F5',
-          50: '#E3E6FD',
-          100: '#C6CCFB',
-          200: '#AAB3F9',
-          300: '#8D99F7',
-          400: '#7180F5',
-          500: '#5A66C4',
-          600: '#444D93',
-          700: '#2D3362',
-          800: '#1a1f3d',
-          900: '#0d0f1f',
+        maple: {
+          DEFAULT: '#0E121B', // Основной темный цвет
+          accent: '#FC784A', // Оранжевый акцент
+          bg: '#F5F7FA', // Основной фон
+          'bg-alt': '#F2F7FC', // Альтернативный фон
+          'bg-dark': '#0E121B', // Темный фон
+          text: 'rgba(0, 0, 0, 0.9)', // Основной текст (контраст на светлом фоне)
+          'text-secondary': '#3D4451', // Вторичный текст (достаточный контраст)
+          'text-muted': '#5C6472', // Приглушенный текст (не слишком светлый на светлом фоне)
+          structure: '#DEE8F0', // Границы и разделители
+          icon: '#566074', // Иконки
+          // Legacy support
+          50: '#F5F7FA',
+          100: '#F5F7FA',
+          200: '#F2F7FC',
+          300: '#DEE8F0',
+          400: '#99A0AE',
+          500: '#525866',
+          600: '#0E121B',
+          700: '#0E121B',
+          800: '#0E121B',
+          900: '#0E121B',
+          dark: '#0E121B',
         }
       }
     },

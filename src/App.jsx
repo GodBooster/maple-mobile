@@ -1,7 +1,7 @@
-import GauntletPresentation from '../GauntletPresentation.jsx'
+import MaplePresentation from '../MaplePresentation.jsx'
 
 function App() {
-  return <GauntletPresentation />
+  return <MaplePresentation />
 }
 
 export default App

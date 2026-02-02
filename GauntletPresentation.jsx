@@ -116,33 +116,24 @@ const Section = ({ children, className = '', id = '' }) => (
 
 // Accent Text Component (solid color, no gradient fade)
 const GradientText = ({ children, className = '' }) => (
-  <span className={`text-gauntlet ${className}`}>
+  <span className={`text-maple ${className}`}>
     {children}
   </span>
 );
 
-// Gauntlet Logo Icon Component (icon only, no text)
-const GauntletIcon = ({ className = 'w-8 h-8' }) => (
+// Maple Logo Icon Component (icon only, no text)
+const MapleIcon = ({ className = 'w-8 h-8' }) => (
   <svg 
     className={className} 
-    viewBox="0 0 24 24" 
+    width="100%" 
+    height="100%" 
+    viewBox="0 0 68 79" 
     fill="none" 
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path 
-      fillRule="evenodd" 
-      clipRule="evenodd" 
-      d="M7.99992 15.9998H11.9999V11.9999H7.99992V7.99992H15.9998V19.9998H3.99996V15.9998H0V0H15.9998V3.99996H3.99996V7.99992V15.9998H7.99992Z" 
-      fill="#717CF5"
-    />
-    <path 
-      d="M19.9995 4H15.9995V7.99996H19.9995V4Z" 
-      fill="#FF8099"
-    />
-    <path 
-      d="M3.99996 20H0V24H3.99996V20Z" 
-      fill="#1E1C2D"
-    />
+    <path d="M0.245784 39.2654C15.0249 38.8351 50.2753 37.2177 58.1423 25.7734C64.123 17.0767 50.923 8.02049 44.6492 4.74798C38.3754 1.46601 29.6479 0 29.6479 0C47.2117 1.98148 74.978 11.6004 66.3356 29.0885C58.5962 44.7417 18.2445 46.8698 0.236328 46.8698V39.2607H0.245784V39.2654Z" fill="#141414"></path>
+    <path d="M0.236328 78.5499V71.0638C22.5893 70.3166 52.4596 69.6687 67.9525 54.8525C68.3733 67.9048 50.5023 73.7924 36.8247 76.2468C24.9864 78.3702 12.382 78.8904 0.241056 78.5499H0.236328Z" fill="#141414"></path>
+    <path d="M67.9621 38.6411C55.6934 51.315 31.0758 54.8334 0 54.8334V62.4236C32.6785 62.4236 67.8675 57.6283 67.9621 38.6411Z" fill="#141414"></path>
   </svg>
 );
 
@@ -188,7 +179,7 @@ const trackEvent = (eventName, eventCategory, eventLabel = '', value = null) => 
 };
 
 // Main Presentation Component
-export default function GauntletPresentation() {
+export default function MaplePresentation() {
   const [activeScreen, setActiveScreen] = useState(0);
   const [userCount, setUserCount] = useState(10000);
   const [autoPlayEnabled, setAutoPlayEnabled] = useState(true);
@@ -246,7 +237,7 @@ export default function GauntletPresentation() {
     const yieldFees = userCount * avgBalance * 0.0015;
     const fxRevenue = totalAnnualSpend * internationalTxnRate * fxSpreadRate;
     const totalRevenue = interchangeRevenue + yieldFees + fxRevenue;
-    const gauntletShare = totalRevenue * 0.7;
+    const mapleShare = totalRevenue * 0.7;
     const ltv = totalRevenue / userCount;
     
     return {
@@ -254,19 +245,19 @@ export default function GauntletPresentation() {
       yieldFees,
       fxRevenue,
       totalRevenue,
-      gauntletShare,
+      mapleShare,
       ltv
     };
   }, [userCount]);
 
-  const { interchangeRevenue, yieldFees, fxRevenue, totalRevenue, gauntletShare, ltv } = revenueData;
+  const { interchangeRevenue, yieldFees, fxRevenue, totalRevenue, mapleShare, ltv } = revenueData;
 
   return (
     <div className="bg-[#0a0a0f] text-white font-sans overflow-x-hidden w-full min-w-0" style={{ width: '100vw', maxWidth: '100%' }}>
       {/* Background Effects */}
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-gauntlet/10 rounded-full blur-[128px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gauntlet-300/10 rounded-full blur-[128px]" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-maple/10 rounded-full blur-[128px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-maple-300/10 rounded-full blur-[128px]" />
         <motion.div 
           className="absolute inset-0 opacity-30"
           style={{ 
@@ -280,8 +271,8 @@ export default function GauntletPresentation() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]/80 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <GauntletIcon className="w-8 h-8" />
-            <span className="font-bold text-lg tracking-tight hidden sm:block">GAUNTLET MOBILE</span>
+            <MapleIcon className="w-8 h-8" />
+            <span className="font-bold text-lg tracking-tight hidden sm:block">MAPLE FINANCE</span>
           </div>
           
           {/* Desktop Navigation */}
@@ -314,7 +305,7 @@ export default function GauntletPresentation() {
               trackEvent('cta_click', 'CTA', 'Schedule Call - Header');
               document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }}
-            className="hidden md:block px-4 py-2 bg-gauntlet rounded-full text-sm font-semibold hover:opacity-90 transition-opacity cursor-pointer"
+            className="hidden md:block px-4 py-2 bg-maple rounded-full text-sm font-semibold hover:opacity-90 transition-opacity cursor-pointer"
           >
             Schedule Call
           </button>
@@ -364,7 +355,7 @@ export default function GauntletPresentation() {
                     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     setMobileMenuOpen(false);
                   }}
-                  className="mt-2 py-3 px-4 bg-gauntlet rounded-lg text-center font-semibold hover:opacity-90 transition-opacity"
+                  className="mt-2 py-3 px-4 bg-maple rounded-lg text-center font-semibold hover:opacity-90 transition-opacity"
                 >
                   Schedule Call
                 </button>
@@ -417,37 +408,37 @@ export default function GauntletPresentation() {
                 <motion.div
                   animate={{ opacity: [0.2, 0.5, 0.2], scale: [1, 1.2, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
-                  className="absolute inset-0 bg-gauntlet/30 rounded-full blur-xl -z-10"
+                  className="absolute inset-0 bg-maple/30 rounded-full blur-xl -z-10"
                 />
               </motion.div>
               
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full text-sm text-zinc-400 border border-white/10">
-                <span className="w-2 h-2 bg-gauntlet rounded-full animate-pulse" />
+                <span className="w-2 h-2 bg-maple rounded-full animate-pulse" />
                 Strategic Partnership Proposal
               </div>
             </div>
             
               <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
                 Seamless DeFi Management<br />
-                <GradientText>Powered by Gauntlet</GradientText>
+                <GradientText>Powered by Maple Finance</GradientText>
             </h1>
             
               <p className="text-lg text-zinc-400 mb-8">
-                A unified mobile interface that makes Gauntlet's institutional-grade vault infrastructure accessible to everyone. One app. All chains. Zero complexity.
+                A unified mobile interface that makes Maple's institutional-grade vault infrastructure accessible to everyone. One app. All chains. Zero complexity.
               </p>
 
               {/* Features with checkmarks - horizontal */}
               <div className="flex flex-wrap items-center gap-6 mb-8">
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-gauntlet flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-maple flex-shrink-0" />
                   <span className="text-zinc-300">Zero Gas Fees</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-gauntlet flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-maple flex-shrink-0" />
                   <span className="text-zinc-300">No Bridging</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-gauntlet flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-maple flex-shrink-0" />
                   <span className="text-zinc-300">No Seed Phrases</span>
                 </div>
               </div>
@@ -458,7 +449,7 @@ export default function GauntletPresentation() {
                   trackEvent('cta_click', 'CTA', 'Explore Solution - Hero');
                   document.getElementById('solution')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }}
-                className="px-8 py-4 bg-gauntlet rounded-full font-semibold text-lg hover:scale-105 transition-transform flex items-center gap-2 cursor-pointer"
+                className="px-8 py-4 bg-maple rounded-full font-semibold text-lg hover:scale-105 transition-transform flex items-center gap-2 cursor-pointer"
               >
                 Explore Solution <ArrowRight className="w-5 h-5" />
               </button>
@@ -507,8 +498,8 @@ export default function GauntletPresentation() {
                           <div className="mb-2">
                             <p className="text-xs font-semibold text-zinc-400 mb-1.5">Earn Strategy</p>
                             {[
-                              { name: 'USDC Earn', apy: '4.8%', balance: '$5,200', change: '+0.15%', color: 'gauntlet', strategy: 'Earn' },
-                              { name: 'ETH Earn', apy: '5.6%', balance: '$3,800', change: '+0.18%', color: 'gauntlet', strategy: 'Earn' }
+                              { name: 'USDC Earn', apy: '4.8%', balance: '$5,200', change: '+0.15%', color: 'maple', strategy: 'Earn' },
+                              { name: 'ETH Earn', apy: '5.6%', balance: '$3,800', change: '+0.18%', color: 'maple', strategy: 'Earn' }
                             ].map((vault, i) => (
                               <motion.div
                                 key={vault.name}
@@ -520,7 +511,7 @@ export default function GauntletPresentation() {
                                 <div className="flex items-start justify-between mb-2">
                                   <div>
                                     <p className="text-sm font-semibold mb-0.5 leading-tight">{vault.name}</p>
-                                    <p className="text-[10px] text-zinc-500">Gauntlet Curated • {vault.strategy}</p>
+                                    <p className="text-[10px] text-zinc-500">Maple Finance Curated • {vault.strategy}</p>
                                   </div>
                                   <div className="text-right">
                                     <p className="text-base font-bold text-[#32d583] leading-tight">{vault.apy}</p>
@@ -537,8 +528,8 @@ export default function GauntletPresentation() {
                                     animate={{ width: `${[52, 38][i]}%` }}
                                     transition={{ delay: i * 0.1 + 0.3, duration: 0.5 }}
                                     className={`h-full ${
-                                      vault.color === 'gauntlet' ? 'bg-gauntlet' :
-                                      'bg-gradient-to-r from-gauntlet-300 to-gauntlet-600'
+                                      vault.color === 'maple' ? 'bg-maple' :
+                                      'bg-gradient-to-r from-maple-300 to-maple-600'
                                     }`}
                                   />
                                 </div>
@@ -550,8 +541,8 @@ export default function GauntletPresentation() {
                           <div className="mb-2">
                             <p className="text-xs font-semibold text-zinc-400 mb-1.5">Prime Lending</p>
                             {[
-                              { name: 'USDC Prime', apy: '6.2%', balance: '$4,500', change: '+0.22%', color: 'gauntlet', strategy: 'Prime Lending' },
-                              { name: 'WETH Prime', apy: '7.1%', balance: '$2,100', change: '+0.28%', color: 'gauntlet', strategy: 'Prime Lending' }
+                              { name: 'USDC Prime', apy: '6.2%', balance: '$4,500', change: '+0.22%', color: 'maple', strategy: 'Prime Lending' },
+                              { name: 'WETH Prime', apy: '7.1%', balance: '$2,100', change: '+0.28%', color: 'maple', strategy: 'Prime Lending' }
                             ].map((vault, i) => (
                               <motion.div
                                 key={vault.name}
@@ -563,7 +554,7 @@ export default function GauntletPresentation() {
                                 <div className="flex items-start justify-between mb-2">
                                   <div>
                                     <p className="text-sm font-semibold mb-0.5 leading-tight">{vault.name}</p>
-                                    <p className="text-[10px] text-zinc-500">Gauntlet Curated • {vault.strategy}</p>
+                                    <p className="text-[10px] text-zinc-500">Maple Finance Curated • {vault.strategy}</p>
                                   </div>
                                   <div className="text-right">
                                     <p className="text-base font-bold text-[#32d583] leading-tight">{vault.apy}</p>
@@ -580,8 +571,8 @@ export default function GauntletPresentation() {
                                     animate={{ width: `${[45, 21][i]}%` }}
                                     transition={{ delay: i * 0.1 + 0.3, duration: 0.5 }}
                                     className={`h-full ${
-                                      vault.color === 'gauntlet' ? 'bg-gauntlet' :
-                                      'bg-gradient-to-r from-gauntlet-300 to-gauntlet-600'
+                                      vault.color === 'maple' ? 'bg-maple' :
+                                      'bg-gradient-to-r from-maple-300 to-maple-600'
                                     }`}
                                   />
                                 </div>
@@ -593,7 +584,7 @@ export default function GauntletPresentation() {
                           <div className="mb-2">
                             <p className="text-xs font-semibold text-zinc-400 mb-1.5">Balanced Lending</p>
                             {[
-                              { name: 'USDC Balanced', apy: '7.8%', balance: '$3,200', change: '+0.32%', color: 'gauntlet', strategy: 'Balanced Lending' },
+                              { name: 'USDC Balanced', apy: '7.8%', balance: '$3,200', change: '+0.32%', color: 'maple', strategy: 'Balanced Lending' },
                               { name: 'DAI Balanced', apy: '8.4%', balance: '$1,900', change: '+0.35%', color: 'amber', strategy: 'Balanced Lending' }
                             ].map((vault, i) => (
                               <motion.div
@@ -606,7 +597,7 @@ export default function GauntletPresentation() {
                                 <div className="flex items-start justify-between mb-2">
                                   <div>
                                     <p className="text-sm font-semibold mb-0.5 leading-tight">{vault.name}</p>
-                                    <p className="text-[10px] text-zinc-500">Gauntlet Curated • {vault.strategy}</p>
+                                    <p className="text-[10px] text-zinc-500">Maple Finance Curated • {vault.strategy}</p>
                                   </div>
                                   <div className="text-right">
                                     <p className="text-base font-bold text-[#32d583] leading-tight">{vault.apy}</p>
@@ -623,7 +614,7 @@ export default function GauntletPresentation() {
                                     animate={{ width: `${[32, 19][i]}%` }}
                                     transition={{ delay: i * 0.1 + 0.3, duration: 0.5 }}
                                     className={`h-full ${
-                                      'bg-gradient-to-r from-gauntlet-300 to-gauntlet-600'
+                                      'bg-gradient-to-r from-maple-300 to-maple-600'
                                     }`}
                                   />
                                 </div>
@@ -636,7 +627,7 @@ export default function GauntletPresentation() {
                             <p className="text-xs font-semibold text-zinc-400 mb-1.5">Frontier Lending</p>
                             {[
                               { name: 'USDC Frontier', apy: '10.2%', balance: '$1,800', change: '+0.42%', color: 'amber', strategy: 'Frontier Lending' },
-                              { name: 'WBTC Frontier', apy: '11.8%', balance: '$950', change: '+0.48%', color: 'gauntlet', strategy: 'Frontier Lending' }
+                              { name: 'WBTC Frontier', apy: '11.8%', balance: '$950', change: '+0.48%', color: 'maple', strategy: 'Frontier Lending' }
                             ].map((vault, i) => (
                               <motion.div
                                 key={vault.name}
@@ -648,7 +639,7 @@ export default function GauntletPresentation() {
                                 <div className="flex items-start justify-between mb-2">
                                   <div>
                                     <p className="text-sm font-semibold mb-0.5 leading-tight">{vault.name}</p>
-                                    <p className="text-[10px] text-zinc-500">Gauntlet Curated • {vault.strategy}</p>
+                                    <p className="text-[10px] text-zinc-500">Maple Finance Curated • {vault.strategy}</p>
                                   </div>
                                   <div className="text-right">
                                     <p className="text-base font-bold text-[#32d583] leading-tight">{vault.apy}</p>
@@ -665,8 +656,8 @@ export default function GauntletPresentation() {
                                     animate={{ width: `${[18, 9.5][i]}%` }}
                                     transition={{ delay: i * 0.1 + 0.3, duration: 0.5 }}
                                     className={`h-full ${
-                                      vault.color === 'amber' ? 'bg-gradient-to-r from-gauntlet-600 to-gauntlet' :
-                                      'bg-gauntlet'
+                                      vault.color === 'amber' ? 'bg-gradient-to-r from-maple-600 to-maple' :
+                                      'bg-maple'
                                     }`}
                                   />
                                 </div>
@@ -689,18 +680,18 @@ export default function GauntletPresentation() {
                               <p className="text-[10px] text-zinc-500 mb-0.5">Total Balance</p>
                               <p className="text-2xl font-bold leading-tight">$12,847.32</p>
                       </div>
-                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gauntlet/20 to-gauntlet-300/20 flex items-center justify-center">
-                              <Lock className="w-4 h-4 text-gauntlet" />
+                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-maple/20 to-maple-300/20 flex items-center justify-center">
+                              <Lock className="w-4 h-4 text-maple" />
                             </div>
                           </div>
                           
-                          <div className="flex items-center gap-1.5 text-gauntlet text-xs bg-gauntlet/10 px-2 py-1.5 rounded-lg">
+                          <div className="flex items-center gap-1.5 text-maple text-xs bg-maple/10 px-2 py-1.5 rounded-lg">
                             <TrendingUp className="w-3 h-3" />
                             <span>+5.2% APY • All funds earning</span>
                           </div>
 
                           <div className="grid grid-cols-2 gap-2 mt-2">
-                            <button className="py-2 bg-gauntlet rounded-lg font-semibold text-xs">
+                            <button className="py-2 bg-maple rounded-lg font-semibold text-xs">
                               Deposit
                             </button>
                             <button className="py-2 bg-white/5 border border-white/10 rounded-lg font-semibold text-xs">
@@ -712,11 +703,11 @@ export default function GauntletPresentation() {
                             <p className="text-xs font-semibold mb-2">Quick Actions</p>
                             <div className="grid grid-cols-3 gap-2">
                               <button className="p-2 bg-white/5 rounded-lg flex flex-col items-center gap-1">
-                                <CreditCard className="w-4 h-4 text-gauntlet" />
+                                <CreditCard className="w-4 h-4 text-maple" />
                                 <span className="text-[10px]">Pay</span>
                               </button>
                               <button className="p-2 bg-white/5 rounded-lg flex flex-col items-center gap-1">
-                                <ArrowRight className="w-4 h-4 text-gauntlet-300" />
+                                <ArrowRight className="w-4 h-4 text-maple-300" />
                                 <span className="text-[10px]">Send</span>
                               </button>
                               <button className="p-2 bg-white/5 rounded-lg flex flex-col items-center gap-1">
@@ -758,7 +749,7 @@ export default function GauntletPresentation() {
                   {activeScreen === 2 && (
                         <div className="p-3 space-y-2.5 overflow-y-auto h-full">
                           <div className="mb-2">
-                            <p className="text-lg font-bold mb-0.5 leading-tight">Gauntlet Card</p>
+                            <p className="text-lg font-bold mb-0.5 leading-tight">Maple Finance Card</p>
                             <p className="text-[10px] text-zinc-500">Spend your yield instantly</p>
                           </div>
 
@@ -791,7 +782,7 @@ export default function GauntletPresentation() {
                           </div>
 
                           <div className="grid grid-cols-2 gap-2">
-                            <button className="py-2 bg-gauntlet rounded-lg font-semibold text-xs flex items-center justify-center gap-1.5">
+                            <button className="py-2 bg-maple rounded-lg font-semibold text-xs flex items-center justify-center gap-1.5">
                               <Wallet className="w-3.5 h-3.5" />
                               Apple Pay
                             </button>
@@ -800,9 +791,9 @@ export default function GauntletPresentation() {
                             </button>
                           </div>
 
-                          <div className="p-3 bg-gauntlet/10 rounded-lg border border-gauntlet/30/20">
+                          <div className="p-3 bg-maple/10 rounded-lg border border-maple/30/20">
                             <div className="flex items-center gap-1.5 mb-1">
-                              <Zap className="w-3.5 h-3.5 text-gauntlet" />
+                              <Zap className="w-3.5 h-3.5 text-maple" />
                               <p className="text-xs font-semibold">Just-in-Time Unstake</p>
                             </div>
                             <p className="text-[10px] text-zinc-400 leading-tight">
@@ -831,7 +822,7 @@ export default function GauntletPresentation() {
                         </div>
 
                           <div className="flex gap-1.5 mb-2 overflow-x-auto">
-                            <button className="px-3 py-1.5 bg-gauntlet rounded-full text-[10px] font-semibold whitespace-nowrap">All</button>
+                            <button className="px-3 py-1.5 bg-maple rounded-full text-[10px] font-semibold whitespace-nowrap">All</button>
                             <button className="px-3 py-1.5 bg-white/5 rounded-full text-[10px] whitespace-nowrap">Payments</button>
                             <button className="px-3 py-1.5 bg-white/5 rounded-full text-[10px] whitespace-nowrap">Deposits</button>
                             <button className="px-3 py-1.5 bg-white/5 rounded-full text-[10px] whitespace-nowrap">Yield</button>
@@ -882,7 +873,7 @@ export default function GauntletPresentation() {
                       {activeScreen === 4 && (
                         <div className="p-3 space-y-2.5 overflow-y-auto h-full">
                           <div className="flex items-center gap-3 mb-3">
-                            <div className="w-12 h-12 rounded-full bg-gauntlet flex items-center justify-center text-lg font-bold text-black">
+                            <div className="w-12 h-12 rounded-full bg-maple flex items-center justify-center text-lg font-bold text-black">
                               JS
                             </div>
                             <div>
@@ -911,9 +902,9 @@ export default function GauntletPresentation() {
                             ))}
                           </div>
 
-                          <div className="mt-3 p-3 bg-gauntlet/10 rounded-lg border border-gauntlet/30/20">
+                          <div className="mt-3 p-3 bg-maple/10 rounded-lg border border-maple/30/20">
                             <div className="flex items-center gap-1.5 mb-1">
-                              <Shield className="w-3.5 h-3.5 text-gauntlet" />
+                              <Shield className="w-3.5 h-3.5 text-maple" />
                               <p className="text-xs font-semibold">Account Abstraction</p>
                             </div>
                             <p className="text-[10px] text-zinc-400 leading-tight">
@@ -943,7 +934,7 @@ export default function GauntletPresentation() {
                       key={i}
                       onClick={() => handleScreenChange(i)}
                       className={`flex flex-col items-center gap-0.5 py-0.5 transition-colors ${
-                        i === activeScreen ? 'text-gauntlet' : 'text-zinc-500'
+                        i === activeScreen ? 'text-maple' : 'text-zinc-500'
                       }`}
                     >
                       {tab.icon}
@@ -961,7 +952,7 @@ export default function GauntletPresentation() {
                   key={i}
                   onClick={() => handleScreenChange(i)}
                   className={`w-2 h-2 rounded-full transition-all ${
-                    i === activeScreen ? 'bg-gauntlet w-6' : 'bg-white/20'
+                    i === activeScreen ? 'bg-maple w-6' : 'bg-white/20'
                   }`}
                 />
               ))}
@@ -985,7 +976,7 @@ export default function GauntletPresentation() {
               <GradientText>Unified DeFi Super-App</GradientText>
             </h2>
             <p className="text-zinc-400 max-w-3xl mx-auto text-lg">
-              A single mobile interface that consolidates all Gauntlet vault infrastructure across every supported chain into one seamless experience.
+              A single mobile interface that consolidates all Maple vault infrastructure across every supported chain into one seamless experience.
             </p>
           </motion.div>
 
@@ -996,13 +987,13 @@ export default function GauntletPresentation() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="p-8 bg-gradient-to-br from-gauntlet/10 to-gauntlet/0 rounded-3xl border border-gauntlet/20"
+              className="p-8 bg-gradient-to-br from-maple/10 to-maple/0 rounded-3xl border border-maple/20"
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-gauntlet/20 rounded-xl flex items-center justify-center">
-                  <span className="text-gauntlet font-bold">1</span>
+                <div className="w-10 h-10 bg-maple/20 rounded-xl flex items-center justify-center">
+                  <span className="text-maple font-bold">1</span>
                 </div>
-                <span className="text-gauntlet text-sm font-semibold tracking-wider">PHASE 1 — CORE PRODUCT</span>
+                <span className="text-maple text-sm font-semibold tracking-wider">PHASE 1 — CORE PRODUCT</span>
               </div>
               <h3 className="text-2xl font-bold mb-3">Easy DeFi Management</h3>
               <p className="text-zinc-400 mb-6 text-sm">
@@ -1010,14 +1001,14 @@ export default function GauntletPresentation() {
               </p>
               <ul className="space-y-3">
                 {[
-                  'All Gauntlet vaults: Morpho, Kamino, Drift, Symbiotic',
+                  'All Maple vaults: Morpho, Kamino, Drift, Symbiotic',
                   'Multi-chain: Ethereum, Base, Arbitrum, Optimism, Polygon, Solana',
                   'Multi-asset: USDC, USDT, ETH, wstETH, cbBTC, SOL',
                   'One-tap position migration for yield optimization',
                   'Passkey auth (FaceID/TouchID) — no seed phrases'
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm">
-                    <CheckCircle className="w-4 h-4 text-gauntlet mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-maple mt-0.5 flex-shrink-0" />
                     <span className="text-zinc-300">{item}</span>
                   </li>
                 ))}
@@ -1030,13 +1021,13 @@ export default function GauntletPresentation() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="p-8 bg-gradient-to-br from-gauntlet-300/10 to-gauntlet/0 rounded-3xl border border-gauntlet-300/20"
+              className="p-8 bg-gradient-to-br from-maple-300/10 to-maple/0 rounded-3xl border border-maple-300/20"
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-gauntlet-300/20 rounded-xl flex items-center justify-center">
-                  <span className="text-gauntlet-300 font-bold">2</span>
+                <div className="w-10 h-10 bg-maple-300/20 rounded-xl flex items-center justify-center">
+                  <span className="text-maple-300 font-bold">2</span>
                 </div>
-                <span className="text-gauntlet-300 text-sm font-semibold tracking-wider">PHASE 2 — EXTENSION</span>
+                <span className="text-maple-300 text-sm font-semibold tracking-wider">PHASE 2 — EXTENSION</span>
               </div>
               <h3 className="text-2xl font-bold mb-3">Instant Spending Layer</h3>
               <p className="text-zinc-400 mb-6 text-sm">
@@ -1051,7 +1042,7 @@ export default function GauntletPresentation() {
                   '"Sticky capital" via spending convenience'
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm">
-                    <CheckCircle className="w-4 h-4 text-gauntlet-300 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-maple-300 mt-0.5 flex-shrink-0" />
                     <span className="text-zinc-300">{item}</span>
                   </li>
                 ))}
@@ -1072,7 +1063,7 @@ export default function GauntletPresentation() {
               Current User <span className="text-red-400">Friction</span>
             </h2>
             <p className="text-zinc-400 text-center max-w-3xl mx-auto mb-16">
-              To access or spend their Gauntlet vault yields, users face a complex multi-step process that creates friction, delays, and unnecessary costs.
+              To access or spend their Maple vault yields, users face a complex multi-step process that creates friction, delays, and unnecessary costs.
             </p>
 
             <div className="grid md:grid-cols-2 gap-12 items-start">
@@ -1085,7 +1076,7 @@ export default function GauntletPresentation() {
                 <h3 className="text-xl font-semibold mb-4 text-zinc-300">Current Process</h3>
                 <div className="space-y-3">
                 {[
-                    { step: 'Connect external wallet to Gauntlet', issue: 'UX friction • Multiple clicks' },
+                    { step: 'Connect external wallet to Maple', issue: 'UX friction • Multiple clicks' },
                     { step: 'Unstake from vault', issue: 'Gas fees: $0.01-0.10 (L2) or $1-20 (L1)' },
                     { step: 'Bridge to exchange-supported network', issue: 'Additional gas + 5-30 min wait' },
                     { step: 'Swap to fiat via exchange/on-ramp', issue: 'Fees: 1-3% spread + trading fees' },
@@ -1142,7 +1133,7 @@ export default function GauntletPresentation() {
                     This friction makes capital "mercenary" — users chase marginally higher yields elsewhere due to withdrawal complexity, not product quality.
                   </p>
                   <p className="text-zinc-400 text-sm border-t border-white/10 pt-4">
-                    Gauntlet operates as backend infrastructure, with no direct user relationship or brand engagement. Third-party interfaces capture all user interaction and retention value.
+                    Maple operates as backend infrastructure, with no direct user relationship or brand engagement. Third-party interfaces capture all user interaction and retention value.
                   </p>
                 </div>
             </motion.div>
@@ -1177,8 +1168,8 @@ export default function GauntletPresentation() {
               className="p-8 bg-gradient-to-br from-white/5 to-white/0 rounded-3xl border border-white/10"
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gauntlet/20 rounded-xl flex items-center justify-center">
-                  <Smartphone className="w-6 h-6 text-gauntlet" />
+                <div className="w-12 h-12 bg-maple/20 rounded-xl flex items-center justify-center">
+                  <Smartphone className="w-6 h-6 text-maple" />
                 </div>
                 <span className="text-zinc-400">Mobile DeFi</span>
               </div>
@@ -1186,12 +1177,12 @@ export default function GauntletPresentation() {
                 <AnimatedCounter value={58} suffix="%" />
               </p>
               <p className="text-zinc-400 mb-4">of DeFi users on mobile wallets</p>
-              <div className="flex items-center gap-2 text-gauntlet text-sm">
+              <div className="flex items-center gap-2 text-maple text-sm">
                 <TrendingUp className="w-4 h-4" />
                 <span>40-70M active mobile wallet users (+20% YoY)</span>
               </div>
               <p className="text-xs text-zinc-500 mt-4">
-                Sources: <a href="https://a16zcrypto.com/posts/article/state-of-crypto-report-2025/" target="_blank" rel="noopener noreferrer" className="text-[#AAB3F9] hover:text-gauntlet hover:underline transition-colors">a16z State of Crypto 2025</a>, <a href="https://tradesanta.com/blog/defi-in-2025-key-market-insights" target="_blank" rel="noopener noreferrer" className="text-[#AAB3F9] hover:text-gauntlet hover:underline transition-colors">TradeSanta 2025</a>
+                Sources: <a href="https://a16zcrypto.com/posts/article/state-of-crypto-report-2025/" target="_blank" rel="noopener noreferrer" className="text-[#AAB3F9] hover:text-maple hover:underline transition-colors">a16z State of Crypto 2025</a>, <a href="https://tradesanta.com/blog/defi-in-2025-key-market-insights" target="_blank" rel="noopener noreferrer" className="text-[#AAB3F9] hover:text-maple hover:underline transition-colors">TradeSanta 2025</a>
               </p>
             </motion.div>
 
@@ -1203,8 +1194,8 @@ export default function GauntletPresentation() {
               className="p-8 bg-gradient-to-br from-white/5 to-white/0 rounded-3xl border border-white/10"
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gauntlet-300/20 rounded-xl flex items-center justify-center">
-                  <CreditCard className="w-6 h-6 text-gauntlet-300" />
+                <div className="w-12 h-12 bg-maple-300/20 rounded-xl flex items-center justify-center">
+                  <CreditCard className="w-6 h-6 text-maple-300" />
                 </div>
                 <span className="text-zinc-400">Virtual Cards</span>
               </div>
@@ -1212,12 +1203,12 @@ export default function GauntletPresentation() {
                 $<AnimatedCounter value={17.4} suffix="T" />
               </p>
               <p className="text-zinc-400 mb-4">market size by 2029</p>
-              <div className="flex items-center gap-2 text-gauntlet-300 text-sm">
+              <div className="flex items-center gap-2 text-maple-300 text-sm">
                 <TrendingUp className="w-4 h-4" />
                 <span>235% growth from $5.2T (2025)</span>
               </div>
               <p className="text-xs text-zinc-500 mt-4">
-                Source: <a href="https://www.juniperresearch.com/research/fintech-payments/emerging-payments/virtual-cards-market-research-report/" target="_blank" rel="noopener noreferrer" className="text-[#AAB3F9] hover:text-gauntlet hover:underline transition-colors">Juniper Research Virtual Cards Market 2025-2029</a>
+                Source: <a href="https://www.juniperresearch.com/research/fintech-payments/emerging-payments/virtual-cards-market-research-report/" target="_blank" rel="noopener noreferrer" className="text-[#AAB3F9] hover:text-maple hover:underline transition-colors">Juniper Research Virtual Cards Market 2025-2029</a>
               </p>
             </motion.div>
           </div>
@@ -1235,7 +1226,7 @@ export default function GauntletPresentation() {
             <p className="text-xs text-zinc-500 mt-1">(adjusted, excluding bots and wash trading)</p>
             <p className="text-zinc-400 mt-2">Now rivals Visa's $14.2T — the infrastructure is ready</p>
             <p className="text-xs text-zinc-500 mt-4">
-              Sources: <a href="https://a16zcrypto.com/posts/article/state-of-crypto-report-2025/" target="_blank" rel="noopener noreferrer" className="text-[#AAB3F9] hover:text-gauntlet hover:underline transition-colors">a16z State of Crypto 2025</a>, <a href="https://www.forbes.com/sites/roomykhan/2025/11/16/stablecoins-and-blockchain-becoming-the-backbone-of-finance/" target="_blank" rel="noopener noreferrer" className="text-[#AAB3F9] hover:text-gauntlet hover:underline transition-colors">Forbes 2025</a>, <a href="https://annualreport.visa.com/financials/default.aspx" target="_blank" rel="noopener noreferrer" className="text-[#AAB3F9] hover:text-gauntlet hover:underline transition-colors">Visa Annual Report 2025</a>
+              Sources: <a href="https://a16zcrypto.com/posts/article/state-of-crypto-report-2025/" target="_blank" rel="noopener noreferrer" className="text-[#AAB3F9] hover:text-maple hover:underline transition-colors">a16z State of Crypto 2025</a>, <a href="https://www.forbes.com/sites/roomykhan/2025/11/16/stablecoins-and-blockchain-becoming-the-backbone-of-finance/" target="_blank" rel="noopener noreferrer" className="text-[#AAB3F9] hover:text-maple hover:underline transition-colors">Forbes 2025</a>, <a href="https://annualreport.visa.com/financials/default.aspx" target="_blank" rel="noopener noreferrer" className="text-[#AAB3F9] hover:text-maple hover:underline transition-colors">Visa Annual Report 2025</a>
             </p>
           </motion.div>
 
@@ -1287,7 +1278,7 @@ export default function GauntletPresentation() {
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 1.0 }}
-                  className="w-12 h-12 bg-gauntlet rounded-full flex items-center justify-center shadow-lg shadow-gauntlet/30"
+                  className="w-12 h-12 bg-maple rounded-full flex items-center justify-center shadow-lg shadow-maple/30"
                 >
                   <ArrowRight className="w-6 h-6 text-white" />
                 </motion.div>
@@ -1299,11 +1290,11 @@ export default function GauntletPresentation() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 1.0 }}
-                className="p-5 bg-gauntlet/10 rounded-2xl border border-gauntlet/20"
+                className="p-5 bg-maple/10 rounded-2xl border border-maple/20"
               >
                 <div className="flex items-center gap-2 mb-3">
-                  <Smartphone className="w-4 h-4 text-gauntlet" />
-                  <span className="text-gauntlet text-xs font-semibold tracking-wider">PROPOSED STATE</span>
+                  <Smartphone className="w-4 h-4 text-maple" />
+                  <span className="text-maple text-xs font-semibold tracking-wider">PROPOSED STATE</span>
                 </div>
                 <h3 className="text-lg font-bold mb-2">Consumer-Facing Brand</h3>
                 <p className="text-zinc-400 mb-4 text-xs">
@@ -1311,15 +1302,15 @@ export default function GauntletPresentation() {
                 </p>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-xs">
-                    <CheckCircle className="w-3 h-3 text-gauntlet" />
+                    <CheckCircle className="w-3 h-3 text-maple" />
                     <span className="text-zinc-300">Direct brand engagement</span>
                 </div>
                   <div className="flex items-center gap-2 text-xs">
-                    <CheckCircle className="w-3 h-3 text-gauntlet" />
+                    <CheckCircle className="w-3 h-3 text-maple" />
                     <span className="text-zinc-300">Own user relationships & data</span>
                   </div>
                   <div className="flex items-center gap-2 text-xs">
-                    <CheckCircle className="w-3 h-3 text-gauntlet" />
+                    <CheckCircle className="w-3 h-3 text-maple" />
                     <span className="text-zinc-300">Controlled distribution channel</span>
                 </div>
               </div>
@@ -1334,7 +1325,7 @@ export default function GauntletPresentation() {
               transition={{ duration: 0.6, delay: 1.2 }}
               className="text-center text-zinc-500 mt-6 text-xs max-w-2xl mx-auto"
             >
-              Transitioning Gauntlet from <span className="text-zinc-300">backend infrastructure provider</span> to <span className="text-gauntlet">consumer-facing DeFi brand</span>
+              Transitioning Maple from <span className="text-zinc-300">backend infrastructure provider</span> to <span className="text-maple">consumer-facing DeFi brand</span>
             </motion.p>
           </motion.div>
         </div>
@@ -1372,7 +1363,7 @@ export default function GauntletPresentation() {
                 <tr className="border-b border-white/10">
                   <th className="text-left py-4 px-4 text-zinc-400 font-medium">Feature</th>
                   <th className="text-center py-4 px-4">
-                    <span className="text-white font-semibold">Gauntlet Mobile</span>
+                    <span className="text-white font-semibold">Maple Mobile</span>
                   </th>
                   <th className="text-center py-4 px-4 text-zinc-400">Legend.xyz</th>
                   <th className="text-center py-4 px-4 text-zinc-400">DeFi.app</th>
@@ -1382,52 +1373,52 @@ export default function GauntletPresentation() {
               <tbody>
                 <tr className="border-b border-white/5">
                   <td className="py-4 px-4 text-zinc-300">Native Mobile App</td>
-                  <td className="text-center py-4 px-4"><span className="text-gauntlet font-semibold">✓</span></td>
-                  <td className="text-center py-4 px-4"><span className="text-gauntlet">✓</span></td>
-                  <td className="text-center py-4 px-4"><span className="text-gauntlet">✓</span></td>
-                  <td className="text-center py-4 px-4"><span className="text-gauntlet">✓</span></td>
+                  <td className="text-center py-4 px-4"><span className="text-maple font-semibold">✓</span></td>
+                  <td className="text-center py-4 px-4"><span className="text-maple">✓</span></td>
+                  <td className="text-center py-4 px-4"><span className="text-maple">✓</span></td>
+                  <td className="text-center py-4 px-4"><span className="text-maple">✓</span></td>
                 </tr>
                 <tr className="border-b border-white/5">
                   <td className="py-4 px-4 text-zinc-300">Virtual Visa Card</td>
-                  <td className="text-center py-4 px-4"><span className="text-gauntlet font-semibold">✓</span></td>
+                  <td className="text-center py-4 px-4"><span className="text-maple font-semibold">✓</span></td>
                   <td className="text-center py-4 px-4"><span className="text-zinc-600">✗</span></td>
                   <td className="text-center py-4 px-4"><span className="text-zinc-600">✗</span></td>
-                  <td className="text-center py-4 px-4"><span className="text-gauntlet">✓</span></td>
+                  <td className="text-center py-4 px-4"><span className="text-maple">✓</span></td>
                 </tr>
                 <tr className="border-b border-white/5">
                   <td className="py-4 px-4 text-zinc-300">Institutional Curator</td>
-                  <td className="text-center py-4 px-4"><span className="text-gauntlet font-semibold">Gauntlet</span></td>
+                  <td className="text-center py-4 px-4"><span className="text-maple font-semibold">Maple</span></td>
                   <td className="text-center py-4 px-4"><span className="text-zinc-500">Generic</span></td>
                   <td className="text-center py-4 px-4"><span className="text-zinc-600">✗</span></td>
                   <td className="text-center py-4 px-4"><span className="text-zinc-600">✗</span></td>
                 </tr>
                 <tr className="border-b border-white/5">
                   <td className="py-4 px-4 text-zinc-300">Solana Support</td>
-                  <td className="text-center py-4 px-4"><span className="text-gauntlet font-semibold">✓</span></td>
+                  <td className="text-center py-4 px-4"><span className="text-maple font-semibold">✓</span></td>
                   <td className="text-center py-4 px-4"><span className="text-zinc-600">✗</span></td>
-                  <td className="text-center py-4 px-4"><span className="text-gauntlet">✓</span></td>
+                  <td className="text-center py-4 px-4"><span className="text-maple">✓</span></td>
                   <td className="text-center py-4 px-4"><span className="text-zinc-600">✗</span></td>
                 </tr>
                 <tr className="border-b border-white/5">
                   <td className="py-4 px-4 text-zinc-300">Passkey Auth</td>
-                  <td className="text-center py-4 px-4"><span className="text-gauntlet font-semibold">✓</span></td>
+                  <td className="text-center py-4 px-4"><span className="text-maple font-semibold">✓</span></td>
                   <td className="text-center py-4 px-4"><span className="text-zinc-600">✗</span></td>
                   <td className="text-center py-4 px-4"><span className="text-zinc-500">✗</span></td>
-                  <td className="text-center py-4 px-4"><span className="text-gauntlet">✓</span></td>
+                  <td className="text-center py-4 px-4"><span className="text-maple">✓</span></td>
                 </tr>
                 <tr className="border-b border-white/5">
                   <td className="py-4 px-4 text-zinc-300">Gas Sponsorship</td>
-                  <td className="text-center py-4 px-4"><span className="text-gauntlet font-semibold">✓</span></td>
+                  <td className="text-center py-4 px-4"><span className="text-maple font-semibold">✓</span></td>
                   <td className="text-center py-4 px-4"><span className="text-zinc-600">✗</span></td>
-                  <td className="text-center py-4 px-4"><span className="text-gauntlet">✓</span></td>
-                  <td className="text-center py-4 px-4"><span className="text-gauntlet">✓</span></td>
+                  <td className="text-center py-4 px-4"><span className="text-maple">✓</span></td>
+                  <td className="text-center py-4 px-4"><span className="text-maple">✓</span></td>
                 </tr>
                 <tr>
                   <td className="py-4 px-4 text-zinc-300">Status</td>
-                  <td className="text-center py-4 px-4"><span className="text-gauntlet text-[11px] px-2 py-1 bg-gauntlet/10 rounded-full font-semibold">Proposal</span></td>
-                  <td className="text-center py-4 px-4"><span className="text-gauntlet text-[11px] px-2 py-1 bg-gauntlet/10 rounded-full">Live</span></td>
-                  <td className="text-center py-4 px-4"><span className="text-gauntlet text-[11px] px-2 py-1 bg-gauntlet/10 rounded-full">Live</span></td>
-                  <td className="text-center py-4 px-4"><span className="text-gauntlet text-[11px] px-2 py-1 bg-gauntlet/10 rounded-full">Live</span></td>
+                  <td className="text-center py-4 px-4"><span className="text-maple text-[11px] px-2 py-1 bg-maple/10 rounded-full font-semibold">Proposal</span></td>
+                  <td className="text-center py-4 px-4"><span className="text-maple text-[11px] px-2 py-1 bg-maple/10 rounded-full">Live</span></td>
+                  <td className="text-center py-4 px-4"><span className="text-maple text-[11px] px-2 py-1 bg-maple/10 rounded-full">Live</span></td>
+                  <td className="text-center py-4 px-4"><span className="text-maple text-[11px] px-2 py-1 bg-maple/10 rounded-full">Live</span></td>
                 </tr>
               </tbody>
             </table>
@@ -1436,47 +1427,47 @@ export default function GauntletPresentation() {
             {/* Mobile Cards */}
             <div className="md:hidden space-y-4">
               {[
-                { feature: 'Native Mobile App', gauntlet: '✓', legend: '✓', defi: '✓', argent: '✓' },
-                { feature: 'Virtual Visa Card', gauntlet: '✓', legend: '✗', defi: '✗', argent: '✓' },
-                { feature: 'Institutional Curator', gauntlet: 'Gauntlet', legend: 'Generic', defi: '✗', argent: '✗' },
-                { feature: 'Solana Support', gauntlet: '✓', legend: '✗', defi: '✓', argent: '✗' },
-                { feature: 'Passkey Auth', gauntlet: '✓', legend: '✗', defi: '✗', argent: '✓' },
-                { feature: 'Gas Sponsorship', gauntlet: '✓', legend: '✗', defi: '✓', argent: '✓' },
-                { feature: 'Status', gauntlet: 'Proposal', legend: 'Live', defi: 'Live', argent: 'Live', isStatus: true }
+                { feature: 'Native Mobile App', maple: '✓', legend: '✓', defi: '✓', argent: '✓' },
+                { feature: 'Virtual Visa Card', maple: '✓', legend: '✗', defi: '✗', argent: '✓' },
+                { feature: 'Institutional Curator', maple: 'Maple', legend: 'Generic', defi: '✗', argent: '✗' },
+                { feature: 'Solana Support', maple: '✓', legend: '✗', defi: '✓', argent: '✗' },
+                { feature: 'Passkey Auth', maple: '✓', legend: '✗', defi: '✗', argent: '✓' },
+                { feature: 'Gas Sponsorship', maple: '✓', legend: '✗', defi: '✓', argent: '✓' },
+                { feature: 'Status', maple: 'Proposal', legend: 'Live', defi: 'Live', argent: 'Live', isStatus: true }
               ].map((row, idx) => (
                 <div key={idx} className="bg-white/5 rounded-xl p-4 border border-white/10">
                   <h4 className="text-white font-medium mb-3 text-sm">{row.feature}</h4>
                   <div className="grid grid-cols-2 gap-3">
                     <div className="flex flex-col">
-                      <span className="text-xs text-zinc-400 mb-1">Gauntlet Mobile</span>
+                      <span className="text-xs text-zinc-400 mb-1">Maple Mobile</span>
                       {row.isStatus ? (
-                        <span className="text-gauntlet text-[11px] px-2 py-1 bg-gauntlet/10 rounded-full font-semibold inline-block w-fit">{row.gauntlet}</span>
+                        <span className="text-maple text-[11px] px-2 py-1 bg-maple/10 rounded-full font-semibold inline-block w-fit">{row.maple}</span>
                       ) : (
-                        <span className={`${row.gauntlet === '✓' || row.gauntlet === 'Gauntlet' ? 'text-gauntlet font-semibold' : 'text-zinc-600'}`}>{row.gauntlet}</span>
+                        <span className={`${row.maple === '✓' || row.maple === 'Maple' ? 'text-maple font-semibold' : 'text-zinc-600'}`}>{row.maple}</span>
                       )}
                     </div>
                     <div className="flex flex-col">
                       <span className="text-xs text-zinc-400 mb-1">Legend.xyz</span>
                       {row.isStatus ? (
-                        <span className="text-gauntlet text-[11px] px-2 py-1 bg-gauntlet/10 rounded-full inline-block w-fit">{row.legend}</span>
+                        <span className="text-maple text-[11px] px-2 py-1 bg-maple/10 rounded-full inline-block w-fit">{row.legend}</span>
                       ) : (
-                        <span className={row.legend === '✓' ? 'text-gauntlet' : row.legend === 'Generic' ? 'text-zinc-500' : 'text-zinc-600'}>{row.legend}</span>
+                        <span className={row.legend === '✓' ? 'text-maple' : row.legend === 'Generic' ? 'text-zinc-500' : 'text-zinc-600'}>{row.legend}</span>
                       )}
                     </div>
                     <div className="flex flex-col">
                       <span className="text-xs text-zinc-400 mb-1">DeFi.app</span>
                       {row.isStatus ? (
-                        <span className="text-gauntlet text-[11px] px-2 py-1 bg-gauntlet/10 rounded-full inline-block w-fit">{row.defi}</span>
+                        <span className="text-maple text-[11px] px-2 py-1 bg-maple/10 rounded-full inline-block w-fit">{row.defi}</span>
                       ) : (
-                        <span className={row.defi === '✓' ? 'text-gauntlet' : row.defi === '✗' ? 'text-zinc-500' : 'text-zinc-600'}>{row.defi}</span>
+                        <span className={row.defi === '✓' ? 'text-maple' : row.defi === '✗' ? 'text-zinc-500' : 'text-zinc-600'}>{row.defi}</span>
                       )}
                     </div>
                     <div className="flex flex-col">
                       <span className="text-xs text-zinc-400 mb-1">Ready (Argent)</span>
                       {row.isStatus ? (
-                        <span className="text-gauntlet text-[11px] px-2 py-1 bg-gauntlet/10 rounded-full inline-block w-fit">{row.argent}</span>
+                        <span className="text-maple text-[11px] px-2 py-1 bg-maple/10 rounded-full inline-block w-fit">{row.argent}</span>
                       ) : (
-                        <span className={row.argent === '✓' ? 'text-gauntlet' : 'text-zinc-600'}>{row.argent}</span>
+                        <span className={row.argent === '✓' ? 'text-maple' : 'text-zinc-600'}>{row.argent}</span>
                       )}
                     </div>
                   </div>
@@ -1491,7 +1482,7 @@ export default function GauntletPresentation() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="p-4 md:p-8 rounded-2xl md:rounded-3xl bg-gradient-to-r from-gauntlet/5 to-gauntlet-300/5 border border-gauntlet/20"
+            className="p-4 md:p-8 rounded-2xl md:rounded-3xl bg-gradient-to-r from-maple/5 to-maple-300/5 border border-maple/20"
           >
             <div className="flex flex-col sm:flex-row items-start gap-3 md:gap-4">
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-amber-500/15 flex items-center justify-center flex-shrink-0">
@@ -1504,10 +1495,10 @@ export default function GauntletPresentation() {
                   similar infrastructure (Turnkey). However, they lack:
                 </p>
                 <ul className="space-y-2 text-xs md:text-sm text-zinc-400">
-                  <li>• <span className="text-gauntlet">No card/spending functionality</span> — we offer JIT card payments</li>
-                  <li>• <span className="text-gauntlet">No exclusive curator relationship</span> — we have Gauntlet's $1.4B+ TVL</li>
-                  <li>• <span className="text-gauntlet">No Solana support</span> — we cover Kamino & Drift vaults ($215M on Solana)</li>
-                  <li>• <span className="text-gauntlet">Generic protocol integrations</span> — we offer Gauntlet-curated strategies</li>
+                  <li>• <span className="text-maple">No card/spending functionality</span> — we offer JIT card payments</li>
+                  <li>• <span className="text-maple">No exclusive curator relationship</span> — we have Maple's $1.4B+ TVL</li>
+                  <li>• <span className="text-maple">No Solana support</span> — we cover Kamino & Drift vaults ($215M on Solana)</li>
+                  <li>• <span className="text-maple">Generic protocol integrations</span> — we offer Maple-curated strategies</li>
                 </ul>
               </div>
             </div>
@@ -1531,7 +1522,7 @@ export default function GauntletPresentation() {
             <p className="text-zinc-400 max-w-2xl mx-auto">
               Best-in-class infrastructure. Zero blockchain complexity for users.
             </p>
-            <p className="text-gauntlet text-sm mt-2 max-w-2xl mx-auto">
+            <p className="text-maple text-sm mt-2 max-w-2xl mx-auto">
               Built on L2 with ERC-4337 Account Abstraction for 100% capital efficiency.
             </p>
           </motion.div>
@@ -1554,7 +1545,7 @@ export default function GauntletPresentation() {
               },
               {
                 icon: <TrendingUp className="w-8 h-8" />,
-                name: 'Gauntlet Vaults',
+                name: 'Maple Vaults',
                 subtitle: 'Yield Engine',
                 features: ['Morpho (EVM chains)', 'Kamino, Drift (Solana)', 'Symbiotic (Restaking)', '50+ curated strategies'],
                 highlight: ''
@@ -1566,9 +1557,9 @@ export default function GauntletPresentation() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="p-6 bg-white/5 rounded-2xl border border-white/10 hover:border-gauntlet/30/30 transition-colors"
+                className="p-6 bg-white/5 rounded-2xl border border-white/10 hover:border-maple/30/30 transition-colors"
               >
-                <div className="w-14 h-14 bg-gradient-to-br from-gauntlet/20 to-gauntlet-300/20 rounded-xl flex items-center justify-center text-gauntlet mb-4">
+                <div className="w-14 h-14 bg-gradient-to-br from-maple/20 to-maple-300/20 rounded-xl flex items-center justify-center text-maple mb-4">
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-1">{item.name}</h3>
@@ -1576,12 +1567,12 @@ export default function GauntletPresentation() {
                 <ul className="space-y-2 mb-4">
                   {item.features.map((f, j) => (
                     <li key={j} className="flex items-center gap-2 text-sm text-zinc-300">
-                      <CheckCircle className="w-4 h-4 text-gauntlet" />
+                      <CheckCircle className="w-4 h-4 text-maple" />
                       {f}
                     </li>
                   ))}
                 </ul>
-                {item.highlight && <p className="text-xs text-gauntlet font-semibold">{item.highlight}</p>}
+                {item.highlight && <p className="text-xs text-maple font-semibold">{item.highlight}</p>}
               </motion.div>
             ))}
           </div>
@@ -1599,7 +1590,7 @@ export default function GauntletPresentation() {
             </h3>
             <p className="text-zinc-400 text-center mb-12 max-w-3xl mx-auto">
               Unlike traditional crypto cards requiring pre-funded balances, this architecture maintains 
-              <span className="text-gauntlet font-semibold"> 100% of user funds in yield-generating positions</span> until the precise moment of payment.
+              <span className="text-maple font-semibold"> 100% of user funds in yield-generating positions</span> until the precise moment of payment.
             </p>
             
             <div className="grid md:grid-cols-2 gap-8">
@@ -1609,17 +1600,17 @@ export default function GauntletPresentation() {
                 whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="p-6 bg-gradient-to-br from-gauntlet/10 to-gauntlet/0 rounded-2xl border border-gauntlet/20"
+                className="p-6 bg-gradient-to-br from-maple/10 to-maple/0 rounded-2xl border border-maple/20"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <Zap className="w-6 h-6 text-gauntlet" />
+                  <Zap className="w-6 h-6 text-maple" />
                   <div>
-                    <h4 className="text-xl font-bold text-gauntlet">Atomic Model</h4>
+                    <h4 className="text-xl font-bold text-maple">Atomic Model</h4>
                     <p className="text-xs text-zinc-400">L2 Networks & Solana</p>
               </div>
               </div>
                 <p className="text-sm text-zinc-300 mb-4">
-                  Applicable to: <span className="text-gauntlet font-semibold">Base, Arbitrum, Optimism, Polygon, Solana</span>
+                  Applicable to: <span className="text-maple font-semibold">Base, Arbitrum, Optimism, Polygon, Solana</span>
                 </p>
                 <p className="text-xs text-zinc-400 mb-6">
                   Since transactions are cheap (&lt; $0.01) and fast (2-4s finality), we use the Atomic Unstake model.
@@ -1627,28 +1618,28 @@ export default function GauntletPresentation() {
                 
                 <div className="space-y-3">
                   <div className="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
-                    <div className="w-6 h-6 bg-gauntlet/20 rounded-full flex items-center justify-center text-gauntlet font-bold text-xs flex-shrink-0">1</div>
+                    <div className="w-6 h-6 bg-maple/20 rounded-full flex items-center justify-center text-maple font-bold text-xs flex-shrink-0">1</div>
                     <div>
                       <p className="text-sm font-semibold text-white">Trigger</p>
                       <p className="text-xs text-zinc-400">User taps card. Card issuer sends webhook: "Authorize $5.00"</p>
                 </div>
                 </div>
                   <div className="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
-                    <div className="w-6 h-6 bg-gauntlet/20 rounded-full flex items-center justify-center text-gauntlet font-bold text-xs flex-shrink-0">2</div>
+                    <div className="w-6 h-6 bg-maple/20 rounded-full flex items-center justify-center text-maple font-bold text-xs flex-shrink-0">2</div>
                     <div>
                       <p className="text-sm font-semibold text-white">Batch Execution (ERC-4337)</p>
                       <p className="text-xs text-zinc-400">Backend forms batched transaction: Vault.withdraw(5 USDC) + USDC.transfer(CardIssuer)</p>
                 </div>
                 </div>
                   <div className="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
-                    <div className="w-6 h-6 bg-gauntlet/20 rounded-full flex items-center justify-center text-gauntlet font-bold text-xs flex-shrink-0">3</div>
+                    <div className="w-6 h-6 bg-maple/20 rounded-full flex items-center justify-center text-maple font-bold text-xs flex-shrink-0">3</div>
                     <div>
                       <p className="text-sm font-semibold text-white">Sign & Paymaster</p>
                       <p className="text-xs text-zinc-400">Turnkey signs using Session Key. Platform pays gas (Gas Sponsorship) — user pays $0</p>
               </div>
                   </div>
                   <div className="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
-                    <div className="w-6 h-6 bg-gauntlet/20 rounded-full flex items-center justify-center text-gauntlet font-bold text-xs flex-shrink-0">4</div>
+                    <div className="w-6 h-6 bg-maple/20 rounded-full flex items-center justify-center text-maple font-bold text-xs flex-shrink-0">4</div>
                     <div>
                       <p className="text-sm font-semibold text-white">Settlement</p>
                       <p className="text-xs text-zinc-400">Card issuer receives USDC, confirms Visa transaction. Total latency: 2-4 seconds</p>
@@ -1656,8 +1647,8 @@ export default function GauntletPresentation() {
                   </div>
                 </div>
                 
-                <div className="mt-6 p-3 bg-gauntlet/10 rounded-lg border border-gauntlet/20">
-                  <p className="text-xs text-gauntlet font-semibold text-center">
+                <div className="mt-6 p-3 bg-maple/10 rounded-lg border border-maple/20">
+                  <p className="text-xs text-maple font-semibold text-center">
                     Result: 100% of funds were earning yield until the exact second of payment
                   </p>
               </div>
@@ -1669,12 +1660,12 @@ export default function GauntletPresentation() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="p-6 bg-gradient-to-br from-gauntlet-300/10 to-gauntlet-300/0 rounded-2xl border border-gauntlet-300/20"
+                className="p-6 bg-gradient-to-br from-maple-300/10 to-maple-300/0 rounded-2xl border border-maple-300/20"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <Shield className="w-6 h-6 text-gauntlet-300" />
+                  <Shield className="w-6 h-6 text-maple-300" />
                   <div>
-                    <h4 className="text-xl font-bold text-gauntlet-300">Credit Settlement Model</h4>
+                    <h4 className="text-xl font-bold text-maple-300">Credit Settlement Model</h4>
                     <p className="text-xs text-zinc-400">Ethereum L1</p>
                 </div>
                 </div>
@@ -1687,28 +1678,28 @@ export default function GauntletPresentation() {
                 
                 <div className="space-y-3">
                   <div className="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
-                    <div className="w-6 h-6 bg-gauntlet-300/20 rounded-full flex items-center justify-center text-gauntlet-300 font-bold text-xs flex-shrink-0">1</div>
+                    <div className="w-6 h-6 bg-maple-300/20 rounded-full flex items-center justify-center text-maple-300 font-bold text-xs flex-shrink-0">1</div>
                     <div>
                       <p className="text-sm font-semibold text-white">Payment</p>
                       <p className="text-xs text-zinc-400">Platform fronts payment to card issuer from its own funds (instant)</p>
                 </div>
                 </div>
                   <div className="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
-                    <div className="w-6 h-6 bg-gauntlet-300/20 rounded-full flex items-center justify-center text-gauntlet-300 font-bold text-xs flex-shrink-0">2</div>
+                    <div className="w-6 h-6 bg-maple-300/20 rounded-full flex items-center justify-center text-maple-300 font-bold text-xs flex-shrink-0">2</div>
                     <div>
                       <p className="text-sm font-semibold text-white">Debt Accumulation</p>
                       <p className="text-xs text-zinc-400">User's debt recorded in database ($5)</p>
                 </div>
               </div>
                   <div className="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
-                    <div className="w-6 h-6 bg-gauntlet-300/20 rounded-full flex items-center justify-center text-gauntlet-300 font-bold text-xs flex-shrink-0">3</div>
+                    <div className="w-6 h-6 bg-maple-300/20 rounded-full flex items-center justify-center text-maple-300 font-bold text-xs flex-shrink-0">3</div>
                     <div>
                       <p className="text-sm font-semibold text-white">Batch Settlement</p>
                       <p className="text-xs text-zinc-400">When debt reaches threshold ($100) or weekly, perform single Unstake transaction</p>
               </div>
                   </div>
                   <div className="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
-                    <div className="w-6 h-6 bg-gauntlet-300/20 rounded-full flex items-center justify-center text-gauntlet-300 font-bold text-xs flex-shrink-0">4</div>
+                    <div className="w-6 h-6 bg-maple-300/20 rounded-full flex items-center justify-center text-maple-300 font-bold text-xs flex-shrink-0">4</div>
                     <div>
                       <p className="text-sm font-semibold text-white">Reconciliation</p>
                       <p className="text-xs text-zinc-400">Single transaction covers all accumulated spend + gas fees (1 tx/week instead of per-purchase)</p>
@@ -1716,8 +1707,8 @@ export default function GauntletPresentation() {
                   </div>
           </div>
 
-                <div className="mt-6 p-3 bg-gauntlet-300/10 rounded-lg border border-gauntlet-300/20">
-                  <p className="text-xs text-gauntlet-300 font-semibold text-center">
+                <div className="mt-6 p-3 bg-maple-300/10 rounded-lg border border-maple-300/20">
+                  <p className="text-xs text-maple-300 font-semibold text-center">
                     Result: Same 100% efficiency, different architecture. Instant UX with amortized gas costs.
                   </p>
                 </div>
@@ -1760,11 +1751,11 @@ export default function GauntletPresentation() {
                 transition={{ duration: 0.4, delay: i * 0.1 }}
                 className="p-4 bg-white/5 rounded-xl border border-white/10 text-center"
               >
-                <div className="w-10 h-10 mx-auto bg-gauntlet/20 rounded-lg flex items-center justify-center text-gauntlet mb-3">
+                <div className="w-10 h-10 mx-auto bg-maple/20 rounded-lg flex items-center justify-center text-maple mb-3">
                   {item.icon}
                 </div>
                 <p className="font-semibold">{item.name}</p>
-                <p className="text-gauntlet font-bold text-lg">{item.rate}</p>
+                <p className="text-maple font-bold text-lg">{item.rate}</p>
                 <p className="text-xs text-zinc-500">{item.desc}</p>
               </motion.div>
             ))}
@@ -1783,7 +1774,7 @@ export default function GauntletPresentation() {
             <div className="mb-8">
               <div className="flex justify-between mb-3">
                 <span className="text-zinc-400">Active Users</span>
-                <span className="font-bold text-gauntlet text-xl">{userCount.toLocaleString()}</span>
+                <span className="font-bold text-maple text-xl">{userCount.toLocaleString()}</span>
               </div>
               <input
                 type="range"
@@ -1796,7 +1787,7 @@ export default function GauntletPresentation() {
                   setUserCount(newValue);
                   trackEvent('calculator_change', 'Calculator', 'User Count Slider', newValue);
                 }}
-                className="w-full h-2 bg-white/10 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:bg-gauntlet [&::-webkit-slider-thumb]:rounded-full"
+                className="w-full h-2 bg-white/10 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:bg-maple [&::-webkit-slider-thumb]:rounded-full"
               />
               <div className="flex justify-between text-[11px] text-zinc-600 mt-2">
                 <span>10K</span>
@@ -1831,15 +1822,15 @@ export default function GauntletPresentation() {
                   </div>
                   <div className="flex justify-between py-3">
                     <span className="text-zinc-300 font-semibold">Total Revenue</span>
-                    <span className="font-mono text-gauntlet font-bold">{fmt(totalRevenue)}</span>
+                    <span className="font-mono text-maple font-bold">{fmt(totalRevenue)}</span>
                   </div>
                 </div>
               </div>
               
               <div className="flex flex-col justify-center">
-                <div className="p-8 rounded-2xl bg-gradient-to-br from-gauntlet/10 to-gauntlet-300/10 border border-gauntlet/20 text-center">
-                <p className="text-zinc-400 mb-2">Gauntlet Annual Share (70%)</p>
-                  <p className="text-5xl font-bold text-gauntlet mb-4">{fmt(gauntletShare)}</p>
+                <div className="p-8 rounded-2xl bg-gradient-to-br from-maple/10 to-maple-300/10 border border-maple/20 text-center">
+                <p className="text-zinc-400 mb-2">Maple Annual Share (70%)</p>
+                  <p className="text-5xl font-bold text-maple mb-4">{fmt(mapleShare)}</p>
                   <div className="flex justify-center text-sm">
                     <div>
                       <p className="text-zinc-500">Gas Cost/Tx</p>
@@ -1864,15 +1855,15 @@ export default function GauntletPresentation() {
               {/* Rev Share Package */}
               <div className="p-6 bg-white/5 rounded-2xl border border-white/10 relative overflow-hidden">
                 
-                <h4 className="text-lg font-bold text-gauntlet mb-4">Rev Share</h4>
+                <h4 className="text-lg font-bold text-maple mb-4">Rev Share</h4>
                 <div className="space-y-4">
               <div>
                     <p className="text-3xl font-bold text-white">$120K</p>
                     <p className="text-zinc-400 text-sm">Development Cost</p>
               </div>
               <div>
-                    <p className="text-2xl font-bold text-gauntlet-300">75/25</p>
-                <p className="text-zinc-400 text-sm">Revenue Share (Gauntlet/WOOF)</p>
+                    <p className="text-2xl font-bold text-maple-300">75/25</p>
+                <p className="text-zinc-400 text-sm">Revenue Share (Maple/WOOF)</p>
               </div>
               <div>
                     <p className="text-xl font-bold text-amber-400">7 Months</p>
@@ -1891,7 +1882,7 @@ export default function GauntletPresentation() {
                   </div>
                   <div>
                     <p className="text-2xl font-bold text-zinc-500">No Rev Share</p>
-                    <p className="text-zinc-400 text-sm">100% Revenue to Gauntlet</p>
+                    <p className="text-zinc-400 text-sm">100% Revenue to Maple</p>
                   </div>
                   <div>
                     <p className="text-xl font-bold text-amber-400">7 Months</p>
@@ -1955,21 +1946,21 @@ export default function GauntletPresentation() {
                 >
                   <div className="p-6 bg-white/5 rounded-2xl border border-white/10 h-full">
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="text-gauntlet font-semibold">{phase.phase}</span>
+                      <span className="text-maple font-semibold">{phase.phase}</span>
                       <span className="text-zinc-500 text-sm">{phase.months}</span>
                     </div>
                     <h3 className="text-xl font-bold mb-4">{phase.title}</h3>
                     <ul className="space-y-2 mb-4">
                       {phase.items.map((item, j) => (
                         <li key={j} className="flex items-center gap-2 text-sm text-zinc-300">
-                          <CheckCircle className="w-4 h-4 text-gauntlet flex-shrink-0" />
+                          <CheckCircle className="w-4 h-4 text-maple flex-shrink-0" />
                           {item}
                         </li>
                       ))}
                     </ul>
                     <div className="pt-4 border-t border-white/10">
                       <p className="text-sm text-zinc-400">Deliverable:</p>
-                      <p className="font-semibold text-gauntlet">{phase.deliverable}</p>
+                      <p className="font-semibold text-maple">{phase.deliverable}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -1990,18 +1981,18 @@ export default function GauntletPresentation() {
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
               Build the Primary Distribution<br />
-              <GradientText>Channel for Gauntlet</GradientText>
+              <GradientText>Channel for Maple</GradientText>
             </h2>
-            <p className="text-xl text-zinc-400 mb-8">Transform Gauntlet from backend infrastructure to consumer-facing DeFi brand.</p>
+            <p className="text-xl text-zinc-400 mb-8">Transform Maple from backend infrastructure to consumer-facing DeFi brand.</p>
 
             <div className="grid md:grid-cols-2 gap-6 mb-12">
               <div className="p-6 bg-white/5 rounded-2xl border border-white/10 text-left">
                 <h3 className="font-bold mb-4">Strategic Value</h3>
                 <ul className="space-y-2 text-sm text-zinc-300">
-                  <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-gauntlet" /> Direct user acquisition (not dependent on aggregators)</li>
-                  <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-gauntlet" /> "Sticky capital" via spending convenience</li>
-                  <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-gauntlet" /> Differentiation from Legend.xyz (cards + Solana)</li>
-                  <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-gauntlet" /> $1.4B+ TVL under unified mobile interface</li>
+                  <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-maple" /> Direct user acquisition (not dependent on aggregators)</li>
+                  <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-maple" /> "Sticky capital" via spending convenience</li>
+                  <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-maple" /> Differentiation from Legend.xyz (cards + Solana)</li>
+                  <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-maple" /> $1.4B+ TVL under unified mobile interface</li>
                 </ul>
               </div>
               <div className="p-6 bg-white/5 rounded-2xl border border-white/10 text-left">
@@ -2022,7 +2013,7 @@ export default function GauntletPresentation() {
               onClick={() => trackEvent('external_link_click', 'Contact', 'Calendly - Schedule Partnership Discussion')}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-3 px-12 py-5 bg-gauntlet rounded-full text-xl font-bold text-black shadow-lg shadow-gauntlet/25"
+              className="inline-flex items-center gap-3 px-12 py-5 bg-maple rounded-full text-xl font-bold text-black shadow-lg shadow-maple/25"
             >
               <Calendar className="w-6 h-6" />
               Schedule Partnership Discussion
@@ -2032,7 +2023,7 @@ export default function GauntletPresentation() {
               Or reach out directly: <a 
                 href="mailto:dmitriy@woof.software" 
                 onClick={() => trackEvent('external_link_click', 'Contact', 'Email - dmitriy@woof.software')}
-                className="text-gauntlet hover:underline"
+                className="text-maple hover:underline"
               >dmitriy@woof.software</a>
             </p>
           </motion.div>
