@@ -1,14 +1,15 @@
-# Gauntlet Mobile - Strategic Partnership Proposal
+# Maple Mobile - Strategic Partnership Proposal
 
-A modern, responsive landing page presenting the Gauntlet Mobile DeFi application proposal. Built with React, Vite, and Framer Motion for smooth animations and optimal performance.
+A modern, responsive landing page presenting the Maple Mobile neobank proposal. Built with React, Vite, and Framer Motion for smooth animations and optimal performance.
 
 ## 🚀 Features
 
 - **Responsive Design**: Fully optimized for desktop and mobile devices
 - **Smooth Animations**: Powered by Framer Motion for engaging user experience
-- **Interactive Calculator**: Real-time revenue projection calculator with adjustable user count
-- **Modern UI/UX**: Beautiful gradient designs with custom cursor and smooth scrolling
-- **Performance Optimized**: Memoized calculations and lazy-loaded images
+- **Phone Mockup**: Interactive Retail / Corporate modes with Syrup Debit Card and Maple Corporate Card
+- **Choose Your Product**: For Individuals (Syrup) and For Institutions (Maple Corporate) with fixed-height tab content
+- **Modern UI/UX**: Maple brand colors, gradient designs, smooth scrolling
+- **Performance Optimized**: Memoized calculations, lazy-loaded images
 - **Mobile Navigation**: Hamburger menu for mobile devices
 
 ## 🛠️ Tech Stack
@@ -24,8 +25,8 @@ A modern, responsive landing page presenting the Gauntlet Mobile DeFi applicatio
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/GodBooster/gauntlet-mobile-woof.git
-cd gauntlet-mobile-woof
+git clone https://github.com/GodBooster/maple-mobile.git
+cd maple-mobile
 ```
 
 2. Install dependencies:
@@ -51,39 +52,41 @@ npm run preview
 ## 📁 Project Structure
 
 ```
-gauntlet-mobile/
+maple-mobile/
 ├── public/
 │   ├── dog.png              # WOOF logo image
 │   ├── dog-cursor.png       # Custom cursor image
-│   └── favicon.svg          # Site favicon
+│   ├── favicon.svg          # Site favicon
+│   ├── image.avif           # OG / favicon asset
+│   └── metadata.png        # Social preview image
 ├── src/
 │   ├── App.jsx              # Main app component
 │   ├── main.jsx             # Entry point
 │   └── index.css            # Global styles
-├── GauntletPresentation.jsx  # Main presentation component
+├── MaplePresentation.jsx    # Main presentation component
 ├── index.html               # HTML template
 ├── package.json             # Dependencies
 ├── tailwind.config.js       # Tailwind configuration
-├── vite.config.js           # Vite configuration
+├── vite.config.js          # Vite configuration
 └── README.md                # This file
 ```
 
 ## 🎨 Key Sections
 
-1. **Hero Section**: Introduction with animated phone mockup
-2. **Vision Section**: Strategic framework and goals
-3. **Problem Section**: Current user friction points
-4. **Solution Section**: Gauntlet Mobile solution overview
-5. **Competition Section**: Competitive landscape comparison
-6. **Business Model**: Financial projections and calculator
-7. **Partnership Structure**: Revenue share and fixed price options
-8. **Roadmap**: Development phases and timeline
-9. **Contact Section**: Call-to-action and contact information
+1. **Hero Section**: Introduction with animated phone mockup (Retail / Corporate toggle)
+2. **Choose Your Product**: Syrup Debit Card (Individuals) and Maple Corporate Card (Institutions)
+3. **Current Friction (Problem)**: Yield–Liquidity paradox for individuals and institutions
+4. **How It Works**: Settlement models, Why Solana
+5. **Comparison**: Maple vs Ondo, Coinbase Card, Revolut
+6. **Market Opportunity**: Stats and opportunity
+7. **Tokenomics**: Spend to Burn flywheel
+8. **Business Model**: Revenue streams and unit economics
+9. **Partnership**: Contact and Calendly CTA
 
 ## ⚙️ Configuration
 
 ### Custom Cursor
-The site features a custom dog cursor. To disable it, comment out the cursor styles in `src/index.css`:
+The site can use a custom dog cursor. To disable it, comment out the cursor styles in `src/index.css`:
 
 ```css
 body {
@@ -92,18 +95,10 @@ body {
 ```
 
 ### Colors
-Brand colors are defined in `src/index.css`:
-- Primary: `#7180F5` (Gauntlet Blue)
-- Secondary: `#8D99F7` (Gauntlet 300)
-- Custom colors can be modified in the `:root` CSS variables
-
-## 🎯 Performance Optimizations
-
-- **Memoized Calculations**: Revenue calculations use `useMemo` to prevent unnecessary recalculations
-- **Lazy Loading**: Images load on demand with `loading="lazy"`
-- **Optimized Animations**: All `whileInView` animations use `once: true` to prevent re-triggering
-- **Layout Containment**: CSS `contain: layout` prevents layout shifts during scroll
-- **Stable Scrollbar**: `scrollbar-gutter: stable` prevents content width changes
+Brand colors are defined in `tailwind.config.js` and `src/index.css` (Maple palette):
+- Primary: `#0E121B` (maple)
+- Accent: `#FC784A` (orange)
+- Background: `#F5F7FA` (maple-bg)
 
 ## 📱 Browser Support
 
@@ -115,16 +110,9 @@ Brand colors are defined in `src/index.css`:
 ## 🔧 Development
 
 ### Adding New Sections
-
-1. Create a new section component in `GauntletPresentation.jsx`
+1. Create or edit sections in `MaplePresentation.jsx`
 2. Use the `Section` wrapper component for consistent styling
 3. Add navigation link in the header navigation
-
-### Modifying Calculator
-
-The revenue calculator is located in the Business Model section. Key variables:
-- `userCount`: Adjustable via slider (10K - 200K)
-- Revenue streams: Interchange (1%), Yield Fees (0.15%), FX Spread (0.75%)
 
 ## 📄 License
 
@@ -134,11 +122,11 @@ This project is proprietary and confidential.
 
 For questions or partnership inquiries:
 - Email: dmitriy@woof.software
-- Schedule a call: [Calendly Link](https://calendly.com/dmitriy-woof/small-talk)
+- Schedule a call: [Calendly](https://calendly.com/dmitriy-woof/small-talk)
 
 ## 🙏 Acknowledgments
 
-- Gauntlet for institutional-grade vault infrastructure
+- Maple Finance for institutional-grade yields and infrastructure
 - WOOF Software for development and design
 
 ---
